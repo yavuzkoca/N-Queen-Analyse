@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:v-on="http://www.w3.org/1999/xhtml" xmlns:v-bind="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Page Title</title>
+    <link rel="stylesheet" href="main.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+</head>
+<body>
+    <div id="app" class="container">
+        <div class="row mt-2">
+            <div class="form-group">
+                <label for="size" class="col-sm-2 control-label">Size</label>
+                <input style="display: inline;" id="size" class="form-control col-sm-2" v-model="n" type="number"/>
+                <button style="margin-bottom: 5px;" @click="generate" class="btn btn-warning">Generate</button>
+                <label for="cellSize" class="col-sm-2 control-label">Cell Size</label>
+                <input style="display: inline;" id="cellSize" v-model="cellSize" class="form-control col-sm-2" />
+            </div>
+
+        </div>
+        <div class="row mt-2" v-if="arr.length !== 0">
+            <div v-for="i in range(n)" id="row">
+                <div v-for="j in range(n)" id="column">
+                    <div class="cell"
+                         v-bind:class="{ 'queen':(arr[i][j] === 1), 'red': (arr[i][j] >= 2) }"
+                         v-on:click="hit(i, j)"
+                         v-bind:style="{ height: cellSize+'px', width: cellSize+'px'}"
+                    ></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="index.js"></script>
+</body>
+</html>

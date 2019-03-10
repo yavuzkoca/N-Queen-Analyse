@@ -1,0 +1,18 @@
+.cell {
+    margin: 0 5px 5px 0;
+    text-align: center;
+    padding-top: 10px;
+    cursor: pointer;
+    border: 3px solid black;
+}
+
+.queen {
+    background-image: url("queen.jpg");
+    background-repeat: no-repeat, repeat;
+    background-size: cover;
+    background-position: center;
+}
+
+.red {
+    background-color: darkred;
+}
