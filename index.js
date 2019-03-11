@@ -54,6 +54,7 @@ const app = new Vue({
           this.arr[i][j] = 0 // No piece
         }
       }
+	  this.queen = 0
     },
     putThreat (row, column) {
       for(let i=0; i<this.n; i++) {
