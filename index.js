@@ -4,7 +4,8 @@ const app = new Vue({
     message: 'Hello Vue!',
     n: 8,
     arr: [],
-    cellSize: 40
+    cellSize: 40,
+	queen: 0
   },
   methods: {
     generate() {
@@ -36,9 +37,11 @@ const app = new Vue({
       if (this.arr[i][j] === 1) {
         this.arr[i][j] = 0
         this.removeThreat(i, j)
+		this.queen--;
       } else if (this.arr[i][j] === 0) {
         this.arr[i][j] = 1
         this.putThreat(i, j)
+		this.queen++;
       }
 
       Vue.set(this.arr, i, this.arr[i])
@@ -93,7 +96,7 @@ const app = new Vue({
         }
       }
 
-      for(let k=0; row-k >= 0 && column+k < 15; k++){
+      for(let k=0; row-k >= 0 && column+k < this.n; k++){
         if(this.arr[row-k][column+k] === 0 ){
           this.arr[row-k][column+k] = 2
         } else if (this.arr[row-k][column+k] >= 2) { // If already red, increase
@@ -142,7 +145,7 @@ const app = new Vue({
         }
       }
 
-      for(let k=0; row-k >= 0 && column+k < 15; k++){
+      for(let k=0; row-k >= 0 && column+k < this.n; k++){
         if(this.arr[row-k][column+k] >= 3 ){
           this.arr[row-k][column+k]--
         } else if (this.arr[row-k][column+k] === 2) { // If already red, increase

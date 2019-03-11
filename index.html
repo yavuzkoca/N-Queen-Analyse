@@ -15,8 +15,8 @@
                 <label for="cellSize" class="col-sm-2 control-label">Cell Size</label>
                 <input style="display: inline;" id="cellSize" v-model="cellSize" class="form-control col-sm-2" />
             </div>
-
         </div>
+		<div class="row mt-2">Total queen: {{ queen }}</div>
         <div class="row mt-2" v-if="arr.length !== 0">
             <div v-for="i in range(n)" id="row">
                 <div v-for="j in range(n)" id="column">
